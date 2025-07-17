@@ -14,7 +14,7 @@ export default function Home() {
                         priority
                     />
                 </div>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
                     Human–Computer Interaction Research
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300">
