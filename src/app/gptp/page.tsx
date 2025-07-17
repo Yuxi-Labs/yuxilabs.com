@@ -1,116 +1,89 @@
+import React from 'react'
+
 export default function Page() {
     return (
-        <main className="bg-black text-white min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-            <div className="container mx-auto max-w-4xl">
+        <main className="container mx-auto max-w-3xl px-4 py-16 text-white">
+            <article className="space-y-6 text-base leading-relaxed">
                 <header className="mb-12">
-                    <h1 className="text-4xl font-semibold mb-4 tracking-tight">GPT Prompt Format (.gptp)</h1>
-                    <p className="text-lg text-gray-300 max-w-2xl">
-                        A structured, portable format for building, sharing, and validating prompts across LLM ecosystems.
-                    </p>
+                    <h1 className="text-3xl font-semibold mb-2">GPT Prompt Format (.gptp)</h1>
+                    <p className="text-sm text-gray-400">Yuxi Labs · July 2025</p>
                 </header>
 
-                <section className="space-y-6 text-base leading-relaxed text-gray-100">
-                    <p>
-                        The rapid evolution of large language models has created an ecosystem of prompt engineering that is
-                        still largely undocumented, fragmented, and tool-specific. Every workflow reinvents the wheel: ad hoc
-                        prompts stashed in note apps, scripts that only work with a specific API, obscure conventions passed
-                        around teams. As these systems become more complex—driven by chaining, versioning, variable injection,
-                        and deployment across model providers—the lack of standardization becomes a bottleneck.
-                    </p>
+                <p>
+                    The rapid evolution of large language models has produced a fragmented ecosystem of prompt engineering. Workflows remain inconsistent: prompts live in notes apps, scripts are tightly coupled to single APIs, and informal conventions circulate within isolated teams. As complexity increases—driven by prompt chaining, variable injection, version control, and deployment across multiple model providers—the absence of a portable, structured format has become a critical bottleneck.
+                </p>
 
-                    <p>
-                        GPTP is a portable file format for defining and exchanging GPT-style prompts across tools, platforms,
-                        and runtimes. It brings structure and semantics to the world of prompt design, not by prescribing a
-                        single way to prompt, but by offering a shared language that tools can read, validate, and render.
-                    </p>
+                <p>
+                    GPTP (.gptp) is a structured JSON format for defining and exchanging GPT-style prompts. It enables portability across tools, platforms, and runtimes by introducing schema-driven semantics to prompt design. The format is not prescriptive. Instead, it establishes a shared structure that can be read, validated, and rendered consistently.
+                </p>
 
-                    <p>
-                        A <code className="bg-gray-800 px-1 rounded text-sm text-white">.gptp</code> file is a JSON document.
-                        It can define role-based messages, declare required variables, include metadata, and specify how the
-                        prompt should be rendered or validated. This makes it possible to load the same prompt into a web
-                        editor, a CLI script, or an IDE, with consistent results.
-                    </p>
+                <p>
+                    A .gptp file defines role-based messages, declares variables, includes metadata, and specifies rendering preferences. The same prompt can be loaded into a CLI runner, IDE, or web editor—injecting variables, enforcing validation, and producing consistent outputs.
+                </p>
 
-                    <p className="text-sm uppercase tracking-wide text-gray-400 pt-6">Example</p>
-                    <pre className="bg-gray-900 text-sm rounded-md p-4 overflow-x-auto border border-gray-700">
+                <div className="bg-gray-800 rounded-md overflow-x-auto text-sm">
+          <pre className="p-4">
             <code className="language-json">
-              {`{
+{`{
   "name": "My Prompt",
   "description": "Writes an intro paragraph",
   "version": "1.0",
   "system": "You are a professional writer.",
-  "messages": [{ "role": "user", "content": "Write an intro about {{topic}}" }],
-  "variables": [{ "name": "topic", "required": true }]
+  "messages": [
+    { "role": "user", "content": "Write an intro about {{topic}}" }
+  ],
+  "variables": [
+    { "name": "topic", "required": true }
+  ]
 }`}
             </code>
           </pre>
+                </div>
 
-                    <p>
-                        Prompt creators can write once and reuse across OpenAI’s GPT-4, Anthropic’s Claude, LLaMA-based
-                        systems, or any interface that supports chat-like inputs. Toolmakers can support GPTP as a source of
-                        truth for prompt design. It’s a bridge between humans and the LLM interfaces they’re crafting.
-                    </p>
+                <p>
+                    Prompts authored in GPTP can be rendered for OpenAI’s GPT-4 Turbo, Claude 3, LLaMA-based models, or any compatible interface. Tools can parse and transform GPTP files to match provider-specific formats. The format acts as a source of truth for prompt creators, developers, and system integrators.
+                </p>
 
-                    <p>
-                        For VS Code users, GPTP supports schema validation and autocomplete. Just add a{' '}
-                        <code className="bg-gray-800 px-1 rounded text-sm text-white">$schema</code> property to your file and
-                        use the provided schema file locally or from a remote source.
-                    </p>
+                <p>
+                    When used in environments like Visual Studio Code, GPTP supports JSON Schema validation and autocomplete. Editors recognize the structure as soon as a <code className="bg-gray-700 px-1 py-0.5 rounded text-sm">"$schema"</code> field is defined.
+                </p>
 
-                    <pre className="bg-gray-900 text-sm rounded-md p-4 overflow-x-auto border border-gray-700">
+                <div className="bg-gray-800 rounded-md overflow-x-auto text-sm">
+          <pre className="p-4">
             <code className="language-json">
-              {`{
+{`{
   "$schema": "./schema/gptp.schema.json",
   "name": "...",
   "description": "...",
   "version": "1.0",
   "system": "You are a professional writer.",
-  "messages": [{ "role": "user", "content": "..." }],
-  "variables": [{ "name": "topic", "required": true }]
+  "messages": [
+    { "role": "user", "content": "..." }
+  ],
+  "variables": [
+    { "name": "topic", "required": true }
+  ]
 }`}
             </code>
           </pre>
+                </div>
 
+                <p>
+                    Developers can use CLI tools to validate prompts, inject runtime variables, and render content across models. IDE plugins can visualize prompt structure and preview output. Web-based prompt builders can integrate GPTP as a native format for import/export.
+                </p>
+
+                <p>
+                    GPTP is a foundation. It does not attempt to dictate how to prompt, only how to describe a prompt clearly and consistently. It supports extensibility, tooling, and interoperability at a time when prompt-based systems are evolving rapidly.
+                </p>
+
+                <footer className="pt-8 border-t border-gray-700">
                     <p>
-                        CLI tools can validate and render prompts by injecting variables or transforming output for different
-                        models. IDE plugins can visualize variables and simulate runs. Web apps can host repositories of
-                        prompts with consistent behavior. And everywhere, the same underlying{' '}
-                        <code className="bg-gray-800 px-1 rounded text-sm text-white">.gptp</code> format travels freely.
+                        Read the <a href="/spec" className="text-blue-400 underline">Human-Readable Specification</a>, view the
+                        <a href="https://github.com/Yuxi-Labs/gptp" className="text-blue-400 underline mx-1">GitHub Repository</a>, or
+                        inspect the <a href="/schema/gptp.schema.json" className="text-blue-400 underline">GPTP Schema</a>.
                     </p>
-
-                    <p>
-                        This is just the beginning. Prompt formats are a missing piece in the tooling ecosystem around LLMs.
-                        GPTP is not a final answer—it’s a start. It invites interpretation, extension, and iteration. But most
-                        of all, it offers a stable foundation.
-                    </p>
-
-                    <footer className="pt-12 space-y-2 text-base">
-                        <p>
-                            →{' '}
-                            <a href="/schema/gptp.schema.json" className="text-blue-400 hover:underline">
-                                GPTP Schema
-                            </a>
-                        </p>
-                        <p>
-                            →{' '}
-                            <a href="/spec" className="text-blue-400 hover:underline">
-                                Human-Readable Specification
-                            </a>
-                        </p>
-                        <p>
-                            →{' '}
-                            <a
-                                href="https://github.com/Yuxi-Labs/gptp"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-400 hover:underline"
-                            >
-                                GitHub Repository
-                            </a>
-                        </p>
-                    </footer>
-                </section>
-            </div>
+                </footer>
+            </article>
         </main>
-    );
+    )
 }
