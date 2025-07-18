@@ -11,7 +11,7 @@ export default function Page() {
                 <p className="text-sm text-gray-400">Written by Yuxi Labs · July 2025</p>
 
                 <p>
-                    This page documents the formal structure of a <code className="text-blue-300">.gptp</code> prompt file using JSON.
+                    This page documents the formal structure of a <code>.gptp</code> prompt file.
                     Each field is annotated with its purpose, expected type, and behavior in tooling that supports GPTP.
                 </p>
 
