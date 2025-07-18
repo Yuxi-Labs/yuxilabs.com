@@ -7,7 +7,7 @@ export default function Page() {
     return (
         <main className="container mx-auto max-w-3xl px-4 py-16 text-white text-base leading-relaxed">
             <article className="space-y-6">
-                <h1 className="text-3xl font-semibold mb-4">GPTP Schema (Draft 1.0)</h1>
+                <h1 className="text-3xl font-semibold mb-4">GPTP Schema (Version 1.0.0)</h1>
                 <p className="text-sm text-gray-400">Published by Yuxi Labs · July 2025</p>
 
                 <p>
