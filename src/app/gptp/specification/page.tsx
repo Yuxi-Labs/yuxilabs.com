@@ -1,6 +1,7 @@
 import React from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import Link from "next/link";
 
 export default function Page() {
     return (
@@ -66,26 +67,32 @@ export default function Page() {
                 <footer className="pt-12 space-y-2 text-base">
                     <p>
                         →{' '}
-                        <a href="/schema/gptp.schema.json" className="text-blue-400 hover:underline">
+                        <Link href="/gptp/specification" className="text-blue-400 hover:underline">
+                            GPTP Specification
+                        </Link>
+                    </p>
+                    <p>
+                        →{' '}
+                        <Link href="/gptp/schema" className="text-blue-400 hover:underline">
                             GPTP Schema
-                        </a>
+                        </Link>
                     </p>
                     <p>
                         →{' '}
-                        <a href="/spec" className="text-blue-400 hover:underline">
-                            Human-Readable Specification
-                        </a>
-                    </p>
-                    <p>
-                        →{' '}
-                        <a
+                        <Link
                             href="https://github.com/Yuxi-Labs/gptp"
+                            className="text-blue-400 hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-400 hover:underline"
                         >
                             GitHub Repository
-                        </a>
+                        </Link>
+                    </p>
+                    <p>
+                        ←{' '}
+                        <Link href="/" className="text-blue-400 hover:underline">
+                            Back Home
+                        </Link>
                     </p>
                 </footer>
             </article>

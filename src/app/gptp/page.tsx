@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
@@ -10,18 +11,18 @@ export default function Page() {
                 <p className="text-sm text-gray-400">Written by Yuxi Labs · July 2025</p>
 
                 <p>
-                    The rapid evolution of Generative Pre-trained Transformers (GPTs) has created an ecosystem of prompt crafting that is still largely undocumented, fragmented, and tool-specific. Every workflow reinvents the wheel: ad hoc prompts stashed in note apps, scripts that only work with a specific API, obscure conventions passed around teams. As these systems become more complex—driven by chaining, versioning, variable injection, and deployment across model providers—the lack of standardization becomes a bottleneck.
+                    The rapid evolution of Generative Pre-trained Transformers (GPTs) has created an ecosystem of prompt crafting that is still largely undocumented, fragmented, and tool-specific. Every workflow reinvents the wheel—prompts saved in note apps, scripts tied to a single API, undocumented behaviors passed between teams. As these systems grow more complex—with chaining, versioning, variable injection, and deployment across model providers—the absence of a shared format creates unnecessary friction.
                 </p>
 
                 <p>
-                    In order to address this situation, we developed the GPT Prompt (GPTP) file format. It is a portable file format for defining and exchanging GPT-style prompts across tools, platforms, and runtimes. GPTP brings structure and semantics to the world of prompt crafting, not by prescribing a single way to prompt, but by offering a shared language that tools can read, validate, and render.
+                    GPTP is a JSON-based file format for describing, exchanging, and reusing structured prompts across tools and platforms. It defines a consistent structure for role-based messages, variables, metadata, and rendering behavior—allowing prompts to move cleanly between environments without rework.
                 </p>
 
                 <p>
-                    A <code>.gptp</code> file is a JSON-based document. It can define role-based messages, declare required variables, include metadata, and specify how a prompt should be rendered or validated. This makes it possible to load the same prompt into a web editor, a CLI script, or an IDE, with consistent results. Prompt Developers can inject variables, version their prompts, and collaborate across teams.
+                    Files using the <code>.gptp</code> extension follow the GPTP format. This naming convention makes them recognizable to tools and editors that support it. The format itself is structured, predictable, and designed to support validation, reuse, and collaboration.
                 </p>
 
-                <p>Here's an example:</p>
+                <p>Example:</p>
 
                 <SyntaxHighlighter language="json" style={oneDark} customStyle={{ borderRadius: '0.5rem' }}>
                     {`{
@@ -35,11 +36,11 @@ export default function Page() {
                 </SyntaxHighlighter>
 
                 <p>
-                    Prompt Developers can write once and reuse across OpenAI’s GPT-4, Anthropic’s Claude, LLaMA-based systems, or any interface that supports chat-like inputs. Toolmakers can support GPTP as a source of truth for prompt design. It’s a bridge between humans and the LLM interfaces they’re crafting.
+                    Prompts written in GPTP can be reused across OpenAI’s GPT-4, Anthropic’s Claude, LLaMA-based systems, and any other interface that supports structured, multi-message input. Toolmakers can treat GPTP as a source of truth. Teams can share, version, and deploy prompts consistently.
                 </p>
 
                 <p>
-                    For Visual Studio Code users, the GPTP file format provides support for schema validation and features such as autocompletion. Prompt Developers can add a <code>$schema</code> property to their files and use the provided schema file locally or from a remote source.
+                    In Visual Studio Code, developers can enable schema validation and autocomplete by including a <code>$schema</code> field that references a local or remote GPTP schema.
                 </p>
 
                 <SyntaxHighlighter language="json" style={oneDark} customStyle={{ borderRadius: '0.5rem' }}>
@@ -55,42 +56,42 @@ export default function Page() {
                 </SyntaxHighlighter>
 
                 <p>
-                    CLI tools can validate and render prompts by injecting variables or transforming output for different models. IDE plugins can visualise variables and simulate runs. Web apps can host repositories of prompts with consistent behavior. And everywhere, the same underlying GPTP file format travels freely.
+                    CLI tools can validate and render prompts by injecting variables or transforming output for different models. IDE plugins can simulate runs or visualize variables. Web apps can host libraries of versioned, reusable prompt files. And across all of them, the same GPTP structure holds.
                 </p>
 
                 <p>
-                    This is just the beginning. File formats that enable portability in prompt crafting are a missing piece in the tooling ecosystem around GPTs. The GPTP file format is not a final answer—it’s a start. It invites interpretation, extension, and iteration. But most of all, it offers a stable foundation.
+                    GPTP fills a critical gap in the GPT ecosystem: portability. It gives developers and teams a stable, structured way to design prompts that can move across tools, environments, and providers without rewriting or reverse-engineering. As prompt workflows grow more complex and more collaborative, GPTP makes them manageable, shareable, and scalable.
                 </p>
 
                 <footer className="pt-12 space-y-2 text-base">
                     <p>
                         →{' '}
-                        <a href="/gptp/specification" className="text-blue-400 hover:underline">
+                        <Link href="/gptp/specification" className="text-blue-400 hover:underline">
                             GPTP Specification
-                        </a>
+                        </Link>
                     </p>
                     <p>
                         →{' '}
-                        <a href="/gptp/schema" className="text-blue-400 hover:underline">
+                        <Link href="/gptp/schema" className="text-blue-400 hover:underline">
                             GPTP Schema
-                        </a>
+                        </Link>
                     </p>
                     <p>
                         →{' '}
-                        <a
+                        <Link
                             href="https://github.com/Yuxi-Labs/gptp"
+                            className="text-blue-400 hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-400 hover:underline"
                         >
                             GitHub Repository
-                        </a>
+                        </Link>
                     </p>
                     <p>
                         ←{' '}
-                        <a href="/" className="text-blue-400 hover:underline">
+                        <Link href="/" className="text-blue-400 hover:underline">
                             Back Home
-                        </a>
+                        </Link>
                     </p>
                 </footer>
             </article>
